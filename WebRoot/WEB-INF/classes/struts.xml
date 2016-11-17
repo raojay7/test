@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<package name="emp" extends="struts-default">
+		
+		<!-- 全局视图 
+		<global-results>
+			<result name="success">/index.jsp</result>
+			<result name="error">/error/error.jsp</result>
+		</global-results>-->
+		<!-- 全局异常 
+		<global-exception-mappings>-->
+			<!-- result会找全局视图
+			<exception-mapping result="error" exception="java.lang.Exception"></exception-mapping>
+		</global-exception-mappings>-->
+		<!-- action实例交给spring容器创建 -->
+		<action name="emp_*" class="rj.action.EmployeeAction" method="{1}">
+			<!-- 列表展示 -->
+			<result name="list">/WEB-INF/list.jsp</result>
+			<!-- 进入添加员工视图 -->
+			<result name="add">/WEB-INF/add.jsp</result>
+			<!-- 添加成功，进入列表，用重定向 -->
+			<result name="listAction" type="redirectAction">emp_list</result>
+			<!-- 进入修改页面 -->
+			<result name="edit">/WEB-INF/edit.jsp</result>
+			
+		</action>
+		
+	</package>
+
+</struts>
